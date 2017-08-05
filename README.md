@@ -4,4 +4,4 @@ A work-in-progress remake of the original Super Mario Bros. for NES, in the brow
 (Comes in a NodeJS server, only because I like using Pug. NodeJS isn't important to the project, it can be run on any server)
 
 ## Progress
-1. [http://i.imgur.com/WgcUSEh.gifv](Basic asset loading, movement and camera work made)
+1. (http://i.imgur.com/WgcUSEh.gifv)[Basic asset loading, movement and camera work made]
