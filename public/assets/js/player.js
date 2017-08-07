@@ -8,22 +8,19 @@ class Player {
         this.score = 0;
 
         this.speed = 3;
+        this.friction = 0;
         this.gravity = 1;
-        this.jump_height = 20;
+        this.jump_height = 18;
 
         this.on_ground = true;
         this.is_walking = false;
         this.is_jumping = false;
-        this.is_super = true;
+        this.is_super = false;
+        this.has_firepower = false;
         this.has_starpower = false;
 
         this.direction = 'right';
 
-        this.idle_small = player_idle_small;
-        this.jumping_small = player_jumping_small;
-
-        this.idle_super = player_idle_super;
-        this.jumping_super = player_jumping_super;
 
         this.initialize();
     }
@@ -31,25 +28,29 @@ class Player {
     initialize() {
         this.sprite = createSprite(this.position.x, this.position.y);
 
-        this.sprite.addAnimation('walking_small', '/assets/sprites/mario/running/small/frame_1.png', '/assets/sprites/mario/running/small/frame_2.png', '/assets/sprites/mario/running/small/frame_3.png');
-        this.sprite.addAnimation('walking_super', '/assets/sprites/mario/running/super/frame_1.png', '/assets/sprites/mario/running/super/frame_2.png', '/assets/sprites/mario/running/super/frame_3.png');
+        this.sprite.addAnimation('walking_small', player_walking_small);
+        this.sprite.addAnimation('walking_super', player_walking_super);
+        
+        this.sprite.addAnimation('idle_small', player_idle_small);
+        this.sprite.addAnimation('jumping_small', player_jumping_small);
 
-        this.sprite.addImage('idle_small', this.idle_small);
-        this.sprite.addImage('jumping_small', this.jumping_small);
+        this.sprite.addAnimation('idle_super', player_idle_super);
+        this.sprite.addAnimation('jumping_super', player_jumping_super);
 
-        this.sprite.addImage('idle_super', this.idle_super);
-        this.sprite.addImage('jumping_super', this.jumping_super);
+        this.sprite.addAnimation('grow', player_grow);
 
         this.position.x = this.sprite.position.x;
         this.position.y = this.sprite.position.y;
         this.position.direction = this.direction;
         this.position.is_attacking = this.is_attacking;
-
-        this.sprite.addToGroup(loaded);
     }
 
     collide(collider, callback) {
     	this.sprite.collide(collider, callback);
+    }
+
+    overlap(collider, callback) {
+    	this.sprite.overlap(collider, callback);
     }
 
     jump() {
@@ -72,7 +73,7 @@ class Player {
 
     moveRight() {
         this.sprite.mirrorX(1);
-    	this.sprite.velocity.x = this.speed;
+        this.sprite.velocity.x = this.speed;
     }
 
     moveLeft() {
@@ -130,6 +131,6 @@ class Player {
         this.position.y = this.sprite.position.y;
         this.position.direction = this.direction;
 
-        this.sprite.velocity.y += this.gravity;
+        if (do_physics) this.sprite.velocity.y += this.gravity;
     }
 }
