@@ -2,7 +2,7 @@
 
 A work-in-progress remake of the original Super Mario Bros. for NES, in the browser using canvas and P5JS/P5.play (fork by islemaster).
 
-(Comes in a NodeJS server, only because I like using Pug. NodeJS isn't important to the project, it can be run on any server)
+[Play test the latest version here (http://redduckss.github.io/SuperMarioBros)](http://redduckss.github.io/SuperMarioBros)
 
 ## Progress
 
