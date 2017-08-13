@@ -57,3 +57,18 @@ function createShatter(x, y, isTop, isLeft) {
 
 	}, 1000/30);
 }
+
+function resetLevel() {
+	blocks.removeSprites();
+	blocks.clear();
+	enemies.removeSprites();
+	enemies.clear();
+	items.removeSprites();
+	items.clear();
+	tiles.removeSprites();
+	tiles.clear();
+
+	scene_manager.scene.oScene.setup();
+
+	player.resetPosition();
+}

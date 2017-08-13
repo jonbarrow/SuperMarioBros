@@ -2,8 +2,6 @@ function World_1_1() {
 
     this.preload = function() {
 
-        sounds.music.theme_loop = loadSound('assets/music/smb_theme_loop.wav');
-
         gravity = 1;
 
         goomba = new SpriteSheet(entity_sheet,
@@ -98,13 +96,20 @@ function World_1_1() {
 
         createSprite(0, 0, 50, 50); // Reference sprite, since the whole "world" is one solid color
 
-        document.getElementById('container').appendChild(document.getElementsByTagName('canvas')[0]);
     }
 
     this.draw = function() {
-        if (!sounds.music.theme_loop.isPlaying() && loop_music) {
-            sounds.music.theme_loop.play();
-            sounds.music.theme_loop.setVolume(0.3);
+        if (!sounds.music.overworld_theme.isPlaying() && loop_music) {
+            sounds.music.overworld_theme.play();
+            sounds.music.overworld_theme.setVolume(0.3);
+        }
+
+        if (player.position.x >= 0) {
+            translate(width/2, height/2);
+            translate(-player.position.x, 0);
+        } else {
+            translate(width/2, height/2);
+            translate(0, 0);
         }
 
 

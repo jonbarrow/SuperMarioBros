@@ -12,6 +12,17 @@ function SceneManager(p)
 {
     this.scenes = [];
     this.scene = null;
+
+    this.resetScene = function( scene )
+    {
+        this.removeScene( scene );
+        this.addScene( scene );
+    }
+
+    this.removeScene = function( fnScene )
+    {
+        this.scenes.splice(1, this.findSceneIndex( fnScene ));
+    }
     
     // Wire relevant p5.js events, except setup()
     // If you don't call this method, you need to manually wire events
