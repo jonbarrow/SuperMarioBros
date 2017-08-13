@@ -67,14 +67,7 @@ function World_1_1() {
         for (var x=-240;x<1424;x+=32) {
             new Block('ground', x, 224);
             new Block('ground', x, 256);
-        }
-
-        var tet = new Block('ground', 900, 192);
-        tet.tile.is_test = true;
-
-        var tet = new Block('ground', 500, 192);
-        tet.tile.is_test = true;
-        
+        }        
         
 
         /*new Block('brick', 40, 100);
