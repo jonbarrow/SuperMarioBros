@@ -8,12 +8,20 @@ function breakBlock(block) {
 }
 
 function pushBlock(block) {
+	if (block.is_pushing) return;
+	var orig_y = block.position.y;
+	block.is_pushing = true;
 	sounds.effects.bump.play();
 	block.velocity.y -= 4;
 	setTimeout(function() {
 		block.velocity.y += 8;
 		setTimeout(function() {
 			block.velocity.y = 0;
+			block.is_pushing = false;
+			if (block.position.y !== orig_y) {
+				console.log('Block position broken, now fixing')
+				block.position.y = orig_y;
+			}
 		}, 50);
 	}, 50);
 }

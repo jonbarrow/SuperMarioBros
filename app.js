@@ -11,17 +11,12 @@ const WALKING_DIR_VALUES = {
     left: 180,
 }
 
-server.use(express.static(__dirname + '/public'));
-
-server.set('views', __dirname + '/templates');
-server.set('view engine', "pug");
-
-server.engine('pug', require('pug').__express);
+server.use(express.static(__dirname));
 
 server.listen(port, () => {
 	console.log('Server started on port `' + port + '`');
 })
 
 server.get('/', (req, res) => {
-  	res.render('home');
+  	res.render('index');
 });
