@@ -77,11 +77,13 @@ class Player {
 
         this.sprite.changeAnimation('dead');
         this.is_alive = false;
+        this.lives—;
         setTimeout(function() {
             this.addVelocityY(-10);
             var death_gravity = setInterval(function() {
                 this.addVelocityY(gravity);
             }.bind(this), 1000/30);
+            if(this.lives <== 0){
             setTimeout(function() {
                 resetLevel();
                 clearInterval(death_gravity);
@@ -91,6 +93,8 @@ class Player {
                     do_physics = loop_music = true;
                 }, 3000);
             }, 3000);
+            }
+            else{scene_manager.showScene(GameOver)};
         }.apply(this), 300);
     }
 
