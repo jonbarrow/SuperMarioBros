@@ -99,6 +99,7 @@ function setup() {
 	document.getElementById('container').appendChild(document.getElementsByTagName('canvas')[0]);
 	
 	scene_manager = new SceneManager();
+	scene_manager.addScene(GameOver)
 	scene_manager.addScene(Transition);
 	scene_manager.addScene(World_1_1);
 
